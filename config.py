@@ -44,9 +44,9 @@ manual_laberer_file_paths_dict = {
     "TCHT": {x + 1: TCHT_manual_laberer_file_paths[x] for x in range(TCHT_range)}
 }
 
-OF_output_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF/animal_{x}.xlsx" for x in range(1, 20)]
+OF_output_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF/{OF_manual_laberer_file_names[x]}.xlsx" for x in range(19)]
 TCHT_output_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/TCHT/trial_{x}.xlsx" for x in range(1, 58)]
-OF_summary_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF_summary/animal_{x}.xlsx" for x in range(1, 20)]
+OF_summary_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF_summary/{OF_manual_laberer_file_names[x]}.xlsx" for x in range(19)]
 TCHT_summary_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/TCHT_summary/trial_{x}.xlsx" for x in range(1, 58)]
 OF_summary_file_paths_buckets = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF_time_buckets/animal_{x}-{y}.xlsx" for x in range(1, 20) for y in range(1, 6)]
 
@@ -57,7 +57,7 @@ output_file_paths_dict = {
     "TCHT_summary": {x + 1: TCHT_summary_file_paths[x] for x in range(57)},
     "OF_time_buckets": {x + 1: OF_summary_file_paths_buckets[x] for x in range(19*5)},
 }
-print(output_file_paths_dict)
+
 # ########################################## trials info
 
 OF_headers_baseline = ["head scanning", "grooming", "rearing", "scratching", "freezing", "quiet wakefulness",
@@ -85,7 +85,6 @@ stranger_locations_int = [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 
 stranger_locations_str = ["right" if x == 1 else "left" for x in stranger_locations_int]
 
 first_stranger_location = {trial_id: location for trial_id, location in zip(trials_second_ids, stranger_locations_str)}
-print(first_stranger_location)
 
 behaviors = ["nose_to_nose", "exp_cage", "exp_rearing", "other_rearing", "grooming", "scratching", "head_scanning",
              "quiet_wakefulness"]
@@ -152,3 +151,25 @@ for behavior in behaviors:
 #                           "scratching familiar", "scratching stranger", "scratching middle",
 #                           "head_scanning familiar", "head_scanning stranger", "head_scanning middle",
 #                           "quiet_wakefulness familiar", "quiet_wakefulness stranger", "quiet_wakefulness middle"]
+
+
+# generowanie dla GraphPad
+
+open_field_group_con = ["Kamil", "Kasia", "Kinga", "Magda", "Marian", "Martyna", "Patrycjusz", "Sylwia", "Tomek"]
+open_field_group_exp = [rat for rat in OF_manual_laberer_file_names if rat not in open_field_group_con]
+
+
+graph_pad_dict = {
+    "OF": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_summary",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF"
+    },
+    "OF_buckets": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets"
+    },
+    "TCHT": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\TCHT_summary",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT"
+    }
+}

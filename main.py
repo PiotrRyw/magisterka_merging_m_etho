@@ -6,7 +6,7 @@ import pandas as pd
 from merging_files import merge_singular_experiment
 from summarising_beh import summarise_experiment
 from config import OF_headers
-
+from statistics_export import creating_graphpad_files
 
 def merge_files(experiments_list):
     for experiment in experiments_list:
@@ -21,13 +21,11 @@ def summarise_trials(experiments_list):
 
 
 if __name__ == '__main__':
-
-    print(OF_headers)
-
-    for dict_a in [ethovision_file_paths_dict, manual_laberer_file_paths_dict, output_file_paths_dict]:
-        print(dict_a)
-
-    trials_list = ["TCHT"]
+    trials_list = ["OF"]
 
     # merge_files(trials_list)
-    summarise_trials(trials_list)
+    # summarise_trials(trials_list)
+
+    experiment_summary = ["OF"]
+
+    creating_graphpad_files(experiment_summary)
