@@ -1,5 +1,5 @@
 # Piotr Rywczak
-
+import yaml
 
 OF_time_bucket = 5 * 60  # s
 frame_rate = 30
@@ -47,8 +47,13 @@ manual_laberer_file_paths_dict = {
 OF_output_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF/{OF_manual_laberer_file_names[x]}.xlsx" for x in range(19)]
 TCHT_output_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/TCHT/trial_{x}.xlsx" for x in range(1, 58)]
 OF_summary_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF_summary/{OF_manual_laberer_file_names[x]}.xlsx" for x in range(19)]
-TCHT_summary_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/TCHT_summary/trial_{x}.xlsx" for x in range(1, 58)]
-OF_summary_file_paths_buckets = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF_time_buckets/animal_{x}-{y}.xlsx" for x in range(1, 20) for y in range(1, 6)]
+
+TCHT_trial_directories = ["first", "second", "third"]
+TCHT_summary_file_paths = [f"D:/Neuro/Magisterka2024/Scalone_Dane/TCHT_summary/{TCHT_trial_directories[y-1]}/{TCHT_manual_laberer_file_names_partial[x]}_trial_{y}.xlsx" for x in range(19) for y in range(1, 4)]
+
+
+buckets = ["0-5", "5-10", "10-15", "15-20", "20-25"]
+OF_summary_file_paths_buckets = [f"D:/Neuro/Magisterka2024/Scalone_Dane/OF_time_buckets/{buckets[y-1]}/{OF_manual_laberer_file_names[x]}-{y}.xlsx" for x in range(19) for y in range(1, 6)]
 
 output_file_paths_dict = {
     "OF": {x + 1: OF_output_file_paths[x] for x in range(19)},
@@ -153,23 +158,92 @@ for behavior in behaviors:
 #                           "quiet_wakefulness familiar", "quiet_wakefulness stranger", "quiet_wakefulness middle"]
 
 
-# generowanie dla GraphPad
+# generowanie dla GraphPad =============================================================================================
 
 open_field_group_con = ["Kamil", "Kasia", "Kinga", "Magda", "Marian", "Martyna", "Patrycjusz", "Sylwia", "Tomek"]
 open_field_group_exp = [rat for rat in OF_manual_laberer_file_names if rat not in open_field_group_con]
 
 
-graph_pad_dict = {
+three_chamber_group_con = ["Buck", "Campbell", "Edwards", "Houghton", "Kandel", "Montalcini", "Moser Edek", "Nekher",
+                           "Patapoutian"]
+three_chamber_group_exp = [rat for rat in TCHT_manual_laberer_file_names_partial if rat not in three_chamber_group_con]
+
+graph_pad_rats_dict = {
+    "OF": {
+        "con": open_field_group_con,
+        "exp": open_field_group_exp
+    },
+    "OF_buckets_1": {
+        "con": open_field_group_con,
+        "exp": open_field_group_exp
+    },
+    "OF_buckets_2": {
+        "con": open_field_group_con,
+        "exp": open_field_group_exp
+    },
+    "OF_buckets_3": {
+        "con": open_field_group_con,
+        "exp": open_field_group_exp
+    },
+    "OF_buckets_4": {
+        "con": open_field_group_con,
+        "exp": open_field_group_exp
+    },
+    "OF_buckets_5": {
+        "con": open_field_group_con,
+        "exp": open_field_group_exp
+    },
+    "TCHT_trial_1": {
+        "con": three_chamber_group_con,
+        "exp": three_chamber_group_exp
+    },
+    "TCHT_trial_2": {
+        "con": three_chamber_group_con,
+        "exp": three_chamber_group_exp
+    },
+    "TCHT_trial_3": {
+        "con": three_chamber_group_con,
+        "exp": three_chamber_group_exp
+    }
+}
+
+graph_pad_files_dict = {
     "OF": {
         "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_summary",
         "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF"
     },
-    "OF_buckets": {
-        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets",
-        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets"
+    "OF_buckets_1": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets\0-5",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets\0-5"
     },
-    "TCHT": {
-        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\TCHT_summary",
-        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT"
+    "OF_buckets_2": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets\5-10",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets\5-10"
+    },
+    "OF_buckets_3": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets\10-15",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets\10-15"
+    },
+    "OF_buckets_4": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets\15-20",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets\15-20"
+    },
+    "OF_buckets_5": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\OF_time_buckets\20-25",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF_time_buckets\20-25"
+    },
+    "TCHT_trial_1": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\TCHT_summary\first",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\first"
+    },
+    "TCHT_trial_2": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\TCHT_summary\second",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\second"
+    },
+    "TCHT_trial_3": {
+        "input": r"D:\Neuro\Magisterka2024\Scalone_Dane\TCHT_summary\third",
+        "output": r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\third"
     }
 }
+
+ignored_time_in_sec = 10

@@ -8,6 +8,7 @@ from summarising_beh import summarise_experiment
 from config import OF_headers
 from statistics_export import creating_graphpad_files
 
+
 def merge_files(experiments_list):
     for experiment in experiments_list:
         merge_singular_experiment(experiment)
@@ -21,11 +22,12 @@ def summarise_trials(experiments_list):
 
 
 if __name__ == '__main__':
-    trials_list = ["OF"]
+    trials_list = ["TCHT"]
 
     # merge_files(trials_list)
-    # summarise_trials(trials_list)
+    summarise_trials(trials_list)
 
-    experiment_summary = ["OF"]
-
-    creating_graphpad_files(experiment_summary)
+    # experiment_summary = ["OF_buckets_1", "OF_buckets_2", "OF_buckets_3", "OF_buckets_4", "OF_buckets_5"]
+    #
+    # for exp in experiment_summary:
+    #     creating_graphpad_files(exp)

@@ -3,17 +3,25 @@
 import pandas as pd
 import numpy as np
 from config import (OF_headers, TCHT_headers_1st_trial, TCHT_headers_2nd_trial, TCHT_headers_3rd_trial,
-                    TCHT_default_headers)
+                    TCHT_default_headers, ignored_time_in_sec)
 from config import ethovision_file_paths_dict, manual_laberer_file_paths_dict, output_file_paths_dict
 from config import trials_first_ids, trials_second_ids, trials_third_ids, first_stranger_location
 from config import frame_rate, OF_time_bucket
 from loading_files import load_excel_file, export_file_into_excel
 
 
-def total_time(raw_df, summary_df, headers, trial_time=0):
+def total_time(raw_df, summary_df, headers, trial_time=0, ignore_first_seconds=0):
     print(headers)
     if trial_time == 0:
         trial_time = raw_df["Trial time"].iloc[-1]
+
+    print(raw_df.head())
+
+    if ignore_first_seconds != 0:
+        trial_time = trial_time - ignore_first_seconds
+        raw_df = raw_df.loc[raw_df["Trial time"] > ignore_first_seconds]
+
+    print(raw_df.head())
 
     for behavior_and_location in headers:
         behavior = behavior_and_location[0]
@@ -106,13 +114,14 @@ def third_trial_stranger_location(df, rat_id):
 #
 #     return new_df
 
+
 def generate_summary_for_trial(trial_file_path: str, rat_id, headers):
     raw_dataframe = load_excel_file(trial_file_path)
     header_columns = [f"{names[0]} {names[1]}" for names in headers]
     print(header_columns)
 
     summary_dataframe = pd.DataFrame()
-    total_time(raw_dataframe, summary_dataframe, TCHT_default_headers)
+    total_time(raw_dataframe, summary_dataframe, TCHT_default_headers, 0, ignored_time_in_sec)
 
     if rat_id in trials_second_ids:
         summary_dataframe = second_trial_stranger_location(summary_dataframe, rat_id)

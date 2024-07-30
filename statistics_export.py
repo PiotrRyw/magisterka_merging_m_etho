@@ -4,7 +4,7 @@ import pandas as pd
 from loading_files import load_excel_file
 from os import listdir
 from os.path import join
-from config import open_field_group_con, open_field_group_exp, graph_pad_dict
+from config import open_field_group_con, open_field_group_exp, graph_pad_files_dict, graph_pad_rats_dict
 
 
 # open Excel file for each rat
@@ -43,15 +43,26 @@ def generate_output_directory_and_paths(directory: str, dataframe):
     return filepaths_dir
 
 
+def rat_in_list(con_list, rat_file_name):
+    rat_is_in = False
+
+    for con_name in con_list:
+        if con_name in rat_file_name:
+            rat_is_in = True
+    return rat_is_in
+
+
 def creating_graphpad_files(experiment_summary: str):
 
-    of_dir_path = graph_pad_dict[experiment_summary]["input"]
-    output_of_dir_path = graph_pad_dict[experiment_summary]["output"]
+    of_dir_path = graph_pad_files_dict[experiment_summary]["input"]
+    output_of_dir_path = graph_pad_files_dict[experiment_summary]["output"]
 
     input_files_dir = fetch_input_filepaths(of_dir_path)
     print(input_files_dir)
 
     df = load_excel_file(input_files_dir[list(input_files_dir.keys())[0]])
+    print("df:")
+    print(df)
 
     graphpad_file_paths = generate_output_directory_and_paths(output_of_dir_path, dataframe=df)
     print(graphpad_file_paths)
@@ -59,10 +70,16 @@ def creating_graphpad_files(experiment_summary: str):
     rats = input_files_dir.keys()
 
     experiments = graphpad_file_paths.keys()
+    print(rats)
 
-    con = open_field_group_con
+    con = graph_pad_rats_dict[experiment_summary]["con"]
+    print("con:")
+    print(con)
 
-    exp = open_field_group_exp
+    exp = graph_pad_rats_dict[experiment_summary]["exp"]
+
+    print("exp:")
+    print(exp)
 
     for experiment in experiments:
 
@@ -72,10 +89,10 @@ def creating_graphpad_files(experiment_summary: str):
         exp_index = 0
         for rat in rats:
             rat_name = rat[:-5]
-            if rat_name in con:
+            if rat_in_list(con, rat_name):
                 df.at[con_index, "con"] = rat_experiment_value(input_files_dir[rat], experiment)
                 con_index += 1
-            elif rat_name in exp:
+            elif rat_in_list(exp, rat_name):
                 df.at[exp_index, "exp"] = rat_experiment_value(input_files_dir[rat], experiment)
                 exp_index += 1
         print(df)
