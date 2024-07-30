@@ -1,5 +1,5 @@
 # Piotr Rywczak
-
+from benchmarking import MeasuringBenchmark
 from loading_files import load_etho_file, load_excel_file
 from config import ethovision_file_paths_dict, manual_laberer_file_paths_dict, output_file_paths_dict
 import pandas as pd
@@ -7,6 +7,8 @@ from merging_files import merge_singular_experiment
 from summarising_beh import summarise_experiment
 from config import OF_headers
 from statistics_export import creating_graphpad_files
+import time
+import benchmarking
 
 
 def merge_files(experiments_list):
@@ -24,8 +26,15 @@ def summarise_trials(experiments_list):
 if __name__ == '__main__':
     trials_list = ["TCHT"]
 
+    start_time = time.time()
     # merge_files(trials_list)
+    benchmarking.init()
+
     summarise_trials(trials_list)
+
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+    benchmarking.benchmark.print_out_results()
 
     # experiment_summary = ["OF_buckets_1", "OF_buckets_2", "OF_buckets_3", "OF_buckets_4", "OF_buckets_5"]
     #

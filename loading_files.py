@@ -33,6 +33,11 @@ def selecting_columns_from_full_dataframe(dataframe, experiment: str):
         return curated_dataframe
 
 
+def load_csv_file(file_path: str):
+    dataframe = pd.read_csv(file_path)
+    return dataframe
+
+
 def load_excel_file(file_path: str):
     dataframe = pd.read_excel(file_path)
     return dataframe

@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ea48db3-cadd-4d0c-86a7-6e29f665b8ee" name="Changes" comment="generating graphpad files - in progress">
+    <list default="true" id="2ea48db3-cadd-4d0c-86a7-6e29f665b8ee" name="Changes" comment="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds">
+      <change afterPath="$PROJECT_DIR$/benchmarking.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statistics_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/statistics_export.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/summarising_beh.py" beforeDir="false" afterPath="$PROJECT_DIR$/summarising_beh.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,21 +25,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "PiotrRyw"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;PiotrRyw&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="a3176075-eb3f-4756-b7ba-c909f3c3fd3a" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/PiotrRyw/magisterka_merging_m_etho/",
-    "accountId": "a3176075-eb3f-4756-b7ba-c909f3c3fd3a"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/PiotrRyw/magisterka_merging_m_etho/&quot;,
+    &quot;accountId&quot;: &quot;a3176075-eb3f-4756-b7ba-c909f3c3fd3a&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -138,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722326180909</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds">
+      <option name="closed" value="true" />
+      <created>1722334463869</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1722334463869</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +162,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="magisterka statystyka" />
     <MESSAGE value="generating graphpad files - in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="generating graphpad files - in progress" />
+    <MESSAGE value="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds" />
+    <option name="LAST_COMMIT_MESSAGE" value="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds" />
   </component>
 </project>

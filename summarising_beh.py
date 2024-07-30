@@ -8,6 +8,7 @@ from config import ethovision_file_paths_dict, manual_laberer_file_paths_dict, o
 from config import trials_first_ids, trials_second_ids, trials_third_ids, first_stranger_location
 from config import frame_rate, OF_time_bucket
 from loading_files import load_excel_file, export_file_into_excel
+import benchmarking
 
 
 def total_time(raw_df, summary_df, headers, trial_time=0, ignore_first_seconds=0):
@@ -28,14 +29,17 @@ def total_time(raw_df, summary_df, headers, trial_time=0, ignore_first_seconds=0
         location = behavior_and_location[1]
         column_name = behavior + " " + location
 
-        number_of_frames_no_location = sum(1 for x in raw_df[behavior] if x == behavior)
+        number_of_frames_no_location = raw_df[behavior].count()
+
         time_in_seconds_no_location = number_of_frames_no_location / frame_rate
         summary_df.at[0, f"{behavior} Total"] = number_of_frames_no_location
         summary_df.at[1, f"{behavior} Total"] = time_in_seconds_no_location
         summary_df.at[2, f"{behavior} Total"] = (time_in_seconds_no_location * 100) / trial_time
+        benchmarking.benchmark.prepare_dataframe_timer()
+        df_behavior_and_location = raw_df[(raw_df[behavior] == behavior) & (raw_df[location] == 1)]
+        benchmarking.benchmark.update_dataframe_timer()
 
-        number_of_frames_per_location = sum(
-            1 for x, y in zip(raw_df[behavior], raw_df[location]) if x == behavior and y == 1)
+        number_of_frames_per_location = df_behavior_and_location[behavior].count()
 
         time_in_seconds = number_of_frames_per_location / frame_rate
 
@@ -116,7 +120,9 @@ def third_trial_stranger_location(df, rat_id):
 
 
 def generate_summary_for_trial(trial_file_path: str, rat_id, headers):
+    benchmarking.benchmark.prepare_loading_timer()
     raw_dataframe = load_excel_file(trial_file_path)
+    benchmarking.benchmark.update_loading_timer()
     header_columns = [f"{names[0]} {names[1]}" for names in headers]
     print(header_columns)
 
@@ -143,7 +149,10 @@ def summarise_TCHT(experiment_name: str):
 
         dataframe = generate_summary_for_trial(input_files_paths_dict[rat_id], rat_id, TCHT_default_headers)
 
+        benchmarking.benchmark.prepare_saving_timer()
         export_file_into_excel(dataframe, output_files_paths_dict[rat_id])
+        benchmarking.benchmark.update_saving_timer()
+
         print(f"output: {output_files_paths_dict[rat_id]}")
         print(f"Done rat id {rat_id} in {experiment_name}")
 
