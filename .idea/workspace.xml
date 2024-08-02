@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ea48db3-cadd-4d0c-86a7-6e29f665b8ee" name="Changes" comment="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds">
-      <change afterPath="$PROJECT_DIR$/benchmarking.py" afterDir="false" />
+    <list default="true" id="2ea48db3-cadd-4d0c-86a7-6e29f665b8ee" name="Changes" comment="benchmarking file and dataframe operations">
+      <change afterPath="$PROJECT_DIR$/experiment_statistics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/summarising_beh.py" beforeDir="false" afterPath="$PROJECT_DIR$/summarising_beh.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merging_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/merging_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statistics_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/statistics_export.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722334463869</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="benchmarking file and dataframe operations">
+      <option name="closed" value="true" />
+      <created>1722350551869</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1722350551869</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +173,7 @@
     <MESSAGE value="magisterka statystyka" />
     <MESSAGE value="generating graphpad files - in progress" />
     <MESSAGE value="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds" />
-    <option name="LAST_COMMIT_MESSAGE" value="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds" />
+    <MESSAGE value="benchmarking file and dataframe operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="benchmarking file and dataframe operations" />
   </component>
 </project>

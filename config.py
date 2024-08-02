@@ -1,8 +1,16 @@
 # Piotr Rywczak
 import yaml
 
-OF_time_bucket = 5 * 60  # s
 frame_rate = 30
+
+# Open Field time buckets
+OF_time_bucket = 5 * 60  # s
+
+# TCHT seconds ignored
+ignored_time_in_sec = 10
+
+# Parameter used [sec vs frames vs percentage]
+saved_parameter = "percentage"
 
 # ########################################## generating file names
 
@@ -246,4 +254,6 @@ graph_pad_files_dict = {
     }
 }
 
-ignored_time_in_sec = 10
+# =============================================================================================================
+
+experiment_OF_path = r"D:\Neuro\Magisterka2024\Dane_GraphPad\OF"

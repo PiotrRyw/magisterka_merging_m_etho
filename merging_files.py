@@ -29,6 +29,10 @@ def merge_two_files(etho_file_path, manual_file_path, experiment):
 
 def merge_singular_experiment(experiment_name: str):
     print(f"doing {experiment_name}")
+
+    if experiment_name == "OF_time_buckets":  # no separate merged files for OF with buckets
+        experiment_name = "OF"
+
     etho_files_paths_dict = ethovision_file_paths_dict[experiment_name]
     manual_files_paths_dict = manual_laberer_file_paths_dict[experiment_name]
     output_files_paths_dict = output_file_paths_dict[experiment_name]
