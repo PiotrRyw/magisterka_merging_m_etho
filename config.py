@@ -12,6 +12,12 @@ ignored_time_in_sec = 10
 # Parameter used [sec vs frames vs percentage]
 saved_parameter = "percentage"
 
+# merged list
+merged_experiments_list = ["OF_time_buckets"]
+
+# summarised list
+summarised_experiments_list = ["OF_buckets_1", "OF_buckets_2", "OF_buckets_3", "OF_buckets_4", "OF_buckets_5"]
+
 # ########################################## generating file names
 
 OF_ethovision_file_paths = [f"D:/Neuro/Magisterka2024/Dane_pozycyjne_Ethovision/OF/Raw data-OpenField-Trial{x: >6}.xlsx"

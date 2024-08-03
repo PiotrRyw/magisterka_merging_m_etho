@@ -2,7 +2,8 @@
 from benchmarking import MeasuringBenchmark
 from experiment_statistics import generate_statistics_results
 from loading_files import load_etho_file, load_excel_file
-from config import ethovision_file_paths_dict, manual_laberer_file_paths_dict, output_file_paths_dict
+from config import ethovision_file_paths_dict, manual_laberer_file_paths_dict, output_file_paths_dict, \
+    merged_experiments_list, summarised_experiments_list
 import pandas as pd
 from merging_files import merge_singular_experiment
 from summarising_beh import summarise_experiment
@@ -25,9 +26,9 @@ def summarise_trials(experiments_list):
 
 
 if __name__ == '__main__':
-    trials_list = ["OF_time_buckets"]
+    trials_list = merged_experiments_list
 
-    start_time = time.time()
+    # start_time = time.time()
     # merge_files(trials_list)
     # benchmarking.init()
     #
@@ -37,8 +38,8 @@ if __name__ == '__main__':
     #
     # benchmarking.benchmark.print_out_results()
 
-    # experiment_summary = ["OF_buckets_1", "OF_buckets_2", "OF_buckets_3", "OF_buckets_4", "OF_buckets_5"]
-    experiment_summary = ["OF"]
+    experiment_summary = summarised_experiments_list
+
     #
     for exp in experiment_summary:
         creating_graphpad_files(exp)
