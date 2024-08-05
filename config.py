@@ -10,20 +10,23 @@ OF_time_bucket = 5 * 60  # s
 ignored_time_in_sec = 10
 
 # Parameter used [sec vs frames vs percentage]
-saved_parameter = "percentage"
+saved_parameter = "frames"
 
 # merged list
-merged_experiments_list = ["OF_time_buckets"]
+merged_experiments_list = ["TCHT"]
 
 # summarised list
-summarised_experiments_list = ["OF_buckets_1", "OF_buckets_2", "OF_buckets_3", "OF_buckets_4", "OF_buckets_5"]
+summarised_experiments_list = ["TCHT"]
+# summarised_experiments_list = ["OF_buckets_1", "OF_buckets_2", "OF_buckets_3", "OF_buckets_4", "OF_buckets_5"]
+
+graphpad_export_list = ["TCHT_trial_1", "TCHT_trial_2", "TCHT_trial_3"]
 
 # ########################################## generating file names
 
 OF_ethovision_file_paths = [f"D:/Neuro/Magisterka2024/Dane_pozycyjne_Ethovision/OF/Raw data-OpenField-Trial{x: >6}.xlsx"
                             for x in range(1, 20)]
 # Ethovision files maja dodane spacje przed numerem tak zeby calosc numeru miala dokladnie 6 znakow: XXXXX1, XXXX11, etc
-TCHT_ethovision_file_paths = [f"D:/Neuro/Magisterka2024/Dane_pozycyjne_Ethovision/TCHT/Raw data-TChT-Trial{x: >6}.xlsx"
+TCHT_ethovision_file_paths = [f"D:/Neuro/Magisterka2024/Dane_pozycyjne_Ethovision/TCHT/Raw data-TChT_interpolated-Trial{x: >6}.xlsx"
                               for x in range(1, 58)]
 
 ethovision_file_paths_dict = {

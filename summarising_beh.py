@@ -16,13 +16,9 @@ def total_time(raw_df, summary_df, headers, trial_time=0, ignore_first_seconds=0
     if trial_time == 0:
         trial_time = raw_df["Trial time"].iloc[-1]
 
-    print(raw_df.head())
-
     if ignore_first_seconds != 0:
         trial_time = trial_time - ignore_first_seconds
         raw_df = raw_df.loc[raw_df["Trial time"] > ignore_first_seconds]
-
-    print(raw_df.head())
 
     for behavior_and_location in headers:
         behavior = behavior_and_location[0]
@@ -233,3 +229,45 @@ def summarise_experiment(experiment_name: str):
         summarise_OF(experiment_name)
     elif experiment_name == "OF_time_buckets":
         summarise_OF_with_buckets("OF")
+
+
+def check_for_dropped_frames(experiment_name: str):
+    input_files_paths_dict = output_file_paths_dict[experiment_name + "_summary"]
+
+    rat_ids = input_files_paths_dict.keys()
+
+    absolute_min = 100
+    for rat_id in rat_ids:
+        print(input_files_paths_dict[rat_id])
+        dataframe = load_excel_file(input_files_paths_dict[rat_id])
+
+        total = 0
+        columns_sum = 0
+        skip = True
+
+        for column_name in dataframe.columns:
+            if "Total" in column_name:
+                if skip:
+                    print(column_name)
+                    total = dataframe.loc[0, column_name]
+                    skip = False
+                    continue
+                print(f"{total} = {columns_sum}")
+                if total != 0:
+                    percentage = (columns_sum * 100)/total
+                    print(f"{percentage:.2f} %")
+                    if percentage < absolute_min:
+                        absolute_min = percentage
+                else:
+                    print("100 %")
+                print(column_name)
+                total = dataframe.loc[0, column_name]
+                columns_sum = 0
+            else:
+                columns_sum += dataframe.loc[0, column_name]
+        print(f"{total}")
+
+        print(f"current min = {absolute_min}")
+
+    print(f"absolute min = {absolute_min}")
+

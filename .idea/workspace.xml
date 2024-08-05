@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ea48db3-cadd-4d0c-86a7-6e29f665b8ee" name="Changes" comment="small update" />
+    <list default="true" id="2ea48db3-cadd-4d0c-86a7-6e29f665b8ee" name="Changes" comment="moved parameters to config">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/summarising_beh.py" beforeDir="false" afterPath="$PROJECT_DIR$/summarising_beh.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722605360089</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="moved parameters to config">
+      <option name="closed" value="true" />
+      <created>1722668643220</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722668643220</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +189,7 @@
     <MESSAGE value="generating graphpad files - finished&#10;added OF buckets, TCHT without n seconds" />
     <MESSAGE value="benchmarking file and dataframe operations" />
     <MESSAGE value="small update" />
-    <option name="LAST_COMMIT_MESSAGE" value="small update" />
+    <MESSAGE value="moved parameters to config" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved parameters to config" />
   </component>
 </project>
