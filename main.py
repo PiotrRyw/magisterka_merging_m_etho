@@ -11,7 +11,7 @@ from config import OF_headers
 from statistics_export import creating_graphpad_files, list_TCHT_trial_times
 import time
 import benchmarking
-
+import first_entrance
 
 def merge_files(experiments_list):
     for experiment in experiments_list:
@@ -26,27 +26,29 @@ def summarise_trials(experiments_list):
 
 
 if __name__ == '__main__':
-    trials_list = merged_experiments_list
-
-    start_time = time.time()
-    merge_files(trials_list)
-    benchmarking.init()
-
-    summarise_trials(trials_list)
-
-    print("--- %s seconds ---" % (time.time() - start_time))
-
-    benchmarking.benchmark.print_out_results()
-
-    experiment_summary = summarised_experiments_list
-    for exp in experiment_summary:
-        check_for_dropped_frames(exp)
-
-    experiment_summary = graphpad_export_list
-    for exp in experiment_summary:
-        creating_graphpad_files(exp)
+    # trials_list = merged_experiments_list
+    #
+    # start_time = time.time()
+    # merge_files(trials_list)
+    # benchmarking.init()
+    #
+    # summarise_trials(trials_list)
+    #
+    # print("--- %s seconds ---" % (time.time() - start_time))
+    #
+    # benchmarking.benchmark.print_out_results()
+    #
+    # experiment_summary = summarised_experiments_list
+    # for exp in experiment_summary:
+    #     check_for_dropped_frames(exp)
+    #
+    # experiment_summary = graphpad_export_list
+    # for exp in experiment_summary:
+    #     creating_graphpad_files(exp)
 
     # for exp in experiment_summary:
     #     list_TCHT_trial_times(exp)
 
     # generate_statistics_results()
+    print(first_entrance.trial_list)
+    first_entrance.generate_first_chamber_dataframe_for_each_trial()

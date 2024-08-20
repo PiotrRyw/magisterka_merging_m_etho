@@ -181,7 +181,7 @@ open_field_group_con = ["Kamil", "Kasia", "Kinga", "Magda", "Marian", "Martyna",
 open_field_group_exp = [rat for rat in OF_manual_laberer_file_names if rat not in open_field_group_con]
 
 
-three_chamber_group_con = ["Buck", "Campbell", "Edwards", "Houghton", "Kandel", "Montalcini", "Moser Edek", "Nekher",
+three_chamber_group_con = ["Buck", "Campbell", "Edwards", "Houghton", "Kandel", "Levi-Montalcini", "Moser Edek", "Nekher",
                            "Patapoutian"]
 three_chamber_group_exp = [rat for rat in TCHT_manual_laberer_file_names_partial if rat not in three_chamber_group_con]
 
