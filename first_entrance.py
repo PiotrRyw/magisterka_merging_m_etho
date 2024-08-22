@@ -102,9 +102,12 @@ def generate_first_chamber_dataframe_for_each_trial():
     # first_trial_df.to_excel(r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\pierwszy_chamber\text.xlsx")
     sums_first_trial = first_trial_df.groupby(["first chamber", "group"]).size().unstack(fill_value=0)
     print(sums_first_trial)
+    sums_first_trial.to_excel(r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\pierwszy_chamber\first.xlsx")
     sums_second_trial = second_trial_df.groupby(["first chamber", "group"]).size().unstack(fill_value=0)
     print(sums_second_trial)
+    sums_second_trial.to_excel(r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\pierwszy_chamber\second.xlsx")
     sums_third_trial = third_trial_df.groupby(["first chamber", "group"]).size().unstack(fill_value=0)
+    sums_third_trial.to_excel(r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\pierwszy_chamber\third.xlsx")
     print(sums_third_trial)
 
 print(first_chamber_data_dict)
