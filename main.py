@@ -6,6 +6,7 @@ from config import ethovision_file_paths_dict, manual_laberer_file_paths_dict, o
     merged_experiments_list, summarised_experiments_list, graphpad_export_list
 import pandas as pd
 from merging_files import merge_singular_experiment
+from sociability_index import export_social_preference_index
 from summarising_beh import summarise_experiment, check_for_dropped_frames
 from config import OF_headers
 from statistics_export import creating_graphpad_files, list_TCHT_trial_times
@@ -50,5 +51,6 @@ if __name__ == '__main__':
     #     list_TCHT_trial_times(exp)
 
     # generate_statistics_results()
-    print(first_entrance.trial_list)
-    first_entrance.generate_first_chamber_dataframe_for_each_trial()
+    # print(first_entrance.trial_list)
+    # first_entrance.generate_first_chamber_dataframe_for_each_trial()
+    export_social_preference_index()

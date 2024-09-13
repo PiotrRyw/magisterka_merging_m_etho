@@ -75,8 +75,6 @@ group = ["con" if TCHT_manual_laberer_file_names_partial[int((trial_id-1)/3)] in
 
 first_chamber_data_dict = {trial_id: [TCHT_manual_laberer_file_names_partial[int((trial_id-1)/3)], where_entered_first_by_trial_number[trial_id], group[trial_id - 1]] for trial_id in where_entered_first_by_trial_number}
 
-print(three_chamber_group_exp)
-print(three_chamber_group_con)
 
 def generate_first_chamber_dataframe_for_each_trial():
     common_columns = ["trial", "animal", "first chamber", "group"]
@@ -109,6 +107,3 @@ def generate_first_chamber_dataframe_for_each_trial():
     sums_third_trial = third_trial_df.groupby(["first chamber", "group"]).size().unstack(fill_value=0)
     sums_third_trial.to_excel(r"D:\Neuro\Magisterka2024\Dane_GraphPad\TCHT\pierwszy_chamber\third.xlsx")
     print(sums_third_trial)
-
-print(first_chamber_data_dict)
-print("END")
